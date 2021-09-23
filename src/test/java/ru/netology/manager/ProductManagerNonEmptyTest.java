@@ -7,16 +7,16 @@ import ru.netology.domain.Product;
 import ru.netology.domain.Smartphone;
 import ru.netology.repository.ProductRepository;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 class ProductManagerNonEmptyTest {
     private ProductRepository repository = new ProductRepository();
     private ProductManager manager = new ProductManager(repository);
-    private Book first = new Book(1, "Head First Java", "Kathy Sierra");
-    private Book second = new Book(2, "Foundations of Software Testing", "Cem Kaner");
-    private Smartphone third = new Smartphone(3, "IPhone 13", "Apple");
-    private Smartphone fourth = new Smartphone(4, "Galaxy S21", "Samsung");
-    private Product fifth = new Product(5, "teapot");
+    private Book first = new Book(1, "Head First Java", 300, "Kathy Sierra");
+    private Book second = new Book(2, "Foundations of Software Testing", 350, "Cem Kaner");
+    private Smartphone third = new Smartphone(3, "IPhone 13", 130, "Apple");
+    private Smartphone fourth = new Smartphone(4, "Galaxy S21", 150, "Samsung");
+    private Smartphone fifth = new Smartphone(5, "Galaxy A31", 100, "Samsung");
 
     @BeforeEach
     public void setUp() {
@@ -57,15 +57,15 @@ class ProductManagerNonEmptyTest {
 
     @Test
     void shouldSearchManufacturerInSmartphones() {
-        Product[] actual = manager.searchBy("Samsung");
-        Product[] expected = new Product[]{fourth};
+        Product[] actual = manager.searchBy("Apple");
+        Product[] expected = new Product[]{third};
         assertArrayEquals(expected, actual);
     }
 
     @Test
-    void shouldSearchInProduct() {
-        Product[] actual = manager.searchBy("teapot");
-        Product[] expected = new Product[0];
+    void shouldSearchByIf2SmartphonesWithManufacturerExist() {
+        Product[] actual = manager.searchBy("Samsung");
+        Product[] expected = new Product[]{fourth, fifth};
         assertArrayEquals(expected, actual);
     }
 }

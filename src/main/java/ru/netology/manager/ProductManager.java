@@ -49,7 +49,7 @@ public class ProductManager {
             if (smartphone.getManufacturer().equalsIgnoreCase(search)) {
                 return true;
             }
-            return false;
+
         }
         return false;
     }

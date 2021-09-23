@@ -5,12 +5,12 @@ import ru.netology.domain.Book;
 import ru.netology.domain.Product;
 import ru.netology.repository.ProductRepository;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 class ProductManagerEmptyTest {
     private ProductRepository repository = new ProductRepository();
     private ProductManager manager = new ProductManager(repository);
-    private Book first = new Book(1, "Head First Java", "Kathy Sierra");
+    private Book first = new Book(1, "Head First Java", 300, "Kathy Sierra");
 
     @Test
     void shouldGetAll() {

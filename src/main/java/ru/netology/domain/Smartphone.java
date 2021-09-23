@@ -5,15 +5,15 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class Smartphone extends Product {
+public class Smartphone extends Product{
     private String manufacturer;
 
     public Smartphone() {
         super();
     }
 
-    public Smartphone(int id, String name, String manufacturer) {
-        super(id, name);
+    public Smartphone(int id, String name, int price, String manufacturer) {
+        super(id, name, price);
         this.manufacturer = manufacturer;
     }
 }
